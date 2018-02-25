@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9AB44E3920435A8E00BD15F5 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB44E3820435A8E00BD15F5 /* Utilities.swift */; };
 		9AF243F0200448CC00442167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF243EF200448CC00442167 /* AppDelegate.swift */; };
 		9AF243F2200448CC00442167 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF243F1200448CC00442167 /* ViewController.swift */; };
 		9AF243F5200448CC00442167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AF243F3200448CC00442167 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9AB44E3820435A8E00BD15F5 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		9AF243EC200448CC00442167 /* InstagramFirebaseApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramFirebaseApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AF243EF200448CC00442167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AF243F1200448CC00442167 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		9AF243EE200448CC00442167 /* InstagramFirebaseApplication */ = {
 			isa = PBXGroup;
 			children = (
+				9AB44E3820435A8E00BD15F5 /* Utilities.swift */,
 				9AF243EF200448CC00442167 /* AppDelegate.swift */,
 				9AF243F1200448CC00442167 /* ViewController.swift */,
 				9AF243F3200448CC00442167 /* Main.storyboard */,
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AB44E3920435A8E00BD15F5 /* Utilities.swift in Sources */,
 				9AF243F2200448CC00442167 /* ViewController.swift in Sources */,
 				9AF243F0200448CC00442167 /* AppDelegate.swift in Sources */,
 			);
