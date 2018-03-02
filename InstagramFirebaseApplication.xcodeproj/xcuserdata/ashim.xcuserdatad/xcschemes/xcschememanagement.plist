@@ -7,7 +7,25 @@
 		<key>InstagramFirebaseApplication.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>5</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>9AF243EB200448CC00442167</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9AF243FF200448CC00442167</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9AF2440A200448CC00442167</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
