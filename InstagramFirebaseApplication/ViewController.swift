@@ -110,6 +110,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    
+    
     @objc private func handleSignUp() {
         
         guard let email = emailTextField.text, email.count > 0  else {
@@ -122,7 +124,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             return
         }
         
-        Auth.auth().createUser(withEmail: email, password: password) { (user : User? , error : Error?) in
+        Auth.auth().createUser(withEmail: email, password: password) { (user , error : Error?) in
             if let err = error {
                 print("failed to create user", err)
                 return
@@ -145,7 +147,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 print("sucessufully uploaded data ", profileImageURL)
                 
                 guard let uid = user?.uid else {return}
-                let userDictionaryValues = ["username":username, "ProfileImageURL" : profileImageURL]
+                let userDictionaryValues = ["username":username, "profileImageURL" : profileImageURL]
                 let values = [uid: userDictionaryValues]
                 
                 Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
