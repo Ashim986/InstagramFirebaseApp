@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "InstagramFirebaseApplication/ViewController.swift"
-            timestampString = "541821861.8833261"
+            timestampString = "541825775.32026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "InstagramFirebaseApplication/ViewController.swift"
-            timestampString = "541821861.883404"
+            timestampString = "541825775.320344"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "InstagramFirebaseApplication/ViewController.swift"
-            timestampString = "541821861.8834701"
+            timestampString = "541825775.320426"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
@@ -144,6 +144,70 @@
             startingLineNumber = "24"
             endingLineNumber = "24"
             landmarkName = "fetchUser()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "InstagramFirebaseApplication/Login /SignUpController.swift"
+            timestampString = "541912168.5954731"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "handleSignUp()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__ObjC.StorageMetadata&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__ObjC.User&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in InstagramFirebaseApplication.SignUpController.(handleSignUp in _AE2D98CFF731A81B66FC254FE0A3C1E9)() -&gt; ()"
+                  moduleName = "InstagramFirebaseApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashim/Google%20Drive/Swift%20Coding/Short%20Project%20/InstagramFirebaseApp/InstagramFirebaseApplication/Login%20/SignUpController.swift"
+                  timestampString = "541912168.683513"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "166"
+                  endingLineNumber = "166"
+                  offsetFromSymbolStart = "2126">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, __ObjC.DatabaseReference) -&gt; () in closure #1 (Swift.Optional&lt;__ObjC.StorageMetadata&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Optional&lt;__ObjC.User&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in InstagramFirebaseApplication.SignUpController.(handleSignUp in _AE2D98CFF731A81B66FC254FE0A3C1E9)() -&gt; ()"
+                  moduleName = "InstagramFirebaseApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashim/Google%20Drive/Swift%20Coding/Short%20Project%20/InstagramFirebaseApp/InstagramFirebaseApplication/Login%20/SignUpController.swift"
+                  timestampString = "541912168.686085"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "167"
+                  endingLineNumber = "167"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "InstagramFirebaseApplication/Login /SignUpController.swift"
+            timestampString = "541912168.595816"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "handleSignUp()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

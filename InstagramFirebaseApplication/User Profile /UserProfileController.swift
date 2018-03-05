@@ -15,12 +15,39 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     let headerID = "headerID"
     let cellID = "cellID"
+    
+    
+    
     override func viewDidLoad() {
         super .viewDidLoad()
         collectionView?.backgroundColor = .white
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerID)
         collectionView?.register(UICollectionViewCell.self , forCellWithReuseIdentifier: cellID)
         fetchUser()
+        setupLogOutButton()
+    }
+    
+    fileprivate func setupLogOutButton(){
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogout))
+    }
+    
+    @objc func handleLogout(){
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in
+            do{
+                try Auth.auth().signOut()
+                
+                // we need to present login controller
+                
+            }catch let signOutError {
+                print("Failed to sign out user", signOutError)
+            }
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -33,6 +60,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
@@ -71,11 +99,11 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
 
 struct UserModel {
     let username : String
-    let profileImageURL : String
+    let profileImageUrl : String
     
     init(dictionary : [String : Any]) {
         self.username = dictionary["username"] as? String ?? ""
-        self.profileImageURL = dictionary["ProfileImageURL"] as? String ?? ""
+        self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
     }
 }
 

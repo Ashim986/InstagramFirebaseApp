@@ -148,8 +148,8 @@ class UserProfileHeader: UICollectionViewCell {
     
     fileprivate func setupProfileImage() {
 
-        guard let profileImageUrl = user?.profileImageURL else {return}
-        guard let url = URL(string: profileImageUrl) else {return}
+        guard let profileImage = user?.profileImageUrl else {return}
+        guard let url = URL(string: profileImage) else {return}
 //         Using SDWeb Image Pod
          self.profileImageView.sd_setImage(with: url, completed: nil)
         
