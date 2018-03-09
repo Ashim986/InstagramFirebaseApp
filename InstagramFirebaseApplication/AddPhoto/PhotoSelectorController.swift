@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 
 class PhotoSelectorController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
@@ -20,6 +21,16 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
         collectionView?.register(UICollectionViewCell.self , forCellWithReuseIdentifier: cellID)
         setupNavitationButtons()
         collectionView?.register(UICollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerID)
+        fetchPhotos()
+    }
+    fileprivate func fetchPhotos() {
+        
+        let fetchOption = PHFetchOptions()
+        fetchOption.fetchLimit = 4
+       let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOption)
+        allPhotos.enumerateObjects { (asset, count, stop) in
+            print(asset)
+        }
     }
     override var prefersStatusBarHidden: Bool {
         return true
