@@ -15,16 +15,51 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     let headerID = "headerID"
     let cellID = "cellID"
-    
+    var posts = [Post]()
     
     
     override func viewDidLoad() {
         super .viewDidLoad()
         collectionView?.backgroundColor = .white
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerID)
-        collectionView?.register(UICollectionViewCell.self , forCellWithReuseIdentifier: cellID)
+        collectionView?.register(UserProfilePhotoCell.self , forCellWithReuseIdentifier: cellID)
         fetchUser()
         setupLogOutButton()
+        fetchPosts()
+    }
+    
+    fileprivate func fetchPosts() {
+        // fetching user from their login detail require observe the event at the perticular node, with snapshot
+        
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        let refrence = Database.database().reference().child("posts").child(uid)
+        
+        
+        refrence.observe(.value, with: { (snapshot) in
+            print(snapshot.value)
+            
+            guard let dictionaries = snapshot.value as? [String : Any] else {return}
+            
+            dictionaries.forEach({ (key, value) in
+                print("Key : \(key) , Value : \(value)")
+                guard let dictionary = value as? [String : Any] else {return}
+                
+                let imageUrl = dictionary["imageUrl"] as? String
+                print("imageUrl : ",imageUrl as Any)
+                
+                let post = Post(dictionary: dictionary)
+               
+                self.posts.append(post)
+            })
+            self.collectionView?.reloadData()
+            
+        }) { (err) in
+            print("failed to fetch posts : ", err)
+        }
+        
     }
     
     fileprivate func setupLogOutButton(){
@@ -53,7 +88,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return posts.count
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.width  / 3 - 1
@@ -68,8 +103,10 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
-        cell.backgroundColor = .green
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! UserProfilePhotoCell
+        
+        cell.post = posts[indexPath.row]
+        
         return cell
     }
     

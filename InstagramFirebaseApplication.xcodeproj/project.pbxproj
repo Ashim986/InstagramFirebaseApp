@@ -16,6 +16,9 @@
 		9ADBCAEF2052341B0087A048 /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBCAEE2052341B0087A048 /* PhotoSelectorController.swift */; };
 		9ADBCAF12053508B0087A048 /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBCAF02053508B0087A048 /* PhotoSelectorCell.swift */; };
 		9ADBCAF3205364B40087A048 /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBCAF2205364B40087A048 /* PhotoSelectorHeader.swift */; };
+		9ADBCAF520549A320087A048 /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBCAF420549A320087A048 /* SharePhotoController.swift */; };
+		9ADBCAF72054D4520087A048 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBCAF62054D4520087A048 /* Post.swift */; };
+		9ADBCAFA2054D6CC0087A048 /* UserProfilePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBCAF92054D6CC0087A048 /* UserProfilePhotoCell.swift */; };
 		9AF243F0200448CC00442167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF243EF200448CC00442167 /* AppDelegate.swift */; };
 		9AF243F2200448CC00442167 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF243F1200448CC00442167 /* SignUpController.swift */; };
 		9AF243F5200448CC00442167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AF243F3200448CC00442167 /* Main.storyboard */; };
@@ -56,6 +59,9 @@
 		9ADBCAEE2052341B0087A048 /* PhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
 		9ADBCAF02053508B0087A048 /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
 		9ADBCAF2205364B40087A048 /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
+		9ADBCAF420549A320087A048 /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
+		9ADBCAF62054D4520087A048 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		9ADBCAF92054D6CC0087A048 /* UserProfilePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePhotoCell.swift; sourceTree = "<group>"; };
 		9AF243EC200448CC00442167 /* InstagramFirebaseApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramFirebaseApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AF243EF200448CC00442167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AF243F1200448CC00442167 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
@@ -118,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				9A3677FC2048F17F0039F797 /* UserProfileController.swift */,
+				9ADBCAF92054D6CC0087A048 /* UserProfilePhotoCell.swift */,
 				9A3677FE204B21BC0039F797 /* UserProfileHeader.swift */,
 			);
 			path = "User Profile ";
@@ -136,10 +143,19 @@
 			isa = PBXGroup;
 			children = (
 				9ADBCAEE2052341B0087A048 /* PhotoSelectorController.swift */,
+				9ADBCAF420549A320087A048 /* SharePhotoController.swift */,
 				9ADBCAF2205364B40087A048 /* PhotoSelectorHeader.swift */,
 				9ADBCAF02053508B0087A048 /* PhotoSelectorCell.swift */,
 			);
 			path = AddPhoto;
+			sourceTree = "<group>";
+		};
+		9ADBCAF82054D4560087A048 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9ADBCAF62054D4520087A048 /* Post.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		9AF243E3200448CC00442167 = {
@@ -167,6 +183,7 @@
 		9AF243EE200448CC00442167 /* InstagramFirebaseApplication */ = {
 			isa = PBXGroup;
 			children = (
+				9ADBCAF82054D4560087A048 /* Models */,
 				9ADBCAEB205208210087A048 /* AddPhoto */,
 				9A367803204B98960039F797 /* Login  */,
 				9A367800204B21EB0039F797 /* User Profile  */,
@@ -400,9 +417,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ADBCAF520549A320087A048 /* SharePhotoController.swift in Sources */,
 				9AB44E3920435A8E00BD15F5 /* Utilities.swift in Sources */,
 				9ADBCAF12053508B0087A048 /* PhotoSelectorCell.swift in Sources */,
+				9ADBCAF72054D4520087A048 /* Post.swift in Sources */,
 				9AF243F2200448CC00442167 /* SignUpController.swift in Sources */,
+				9ADBCAFA2054D6CC0087A048 /* UserProfilePhotoCell.swift in Sources */,
 				9A3677FB2048F0700039F797 /* MainTabBarController.swift in Sources */,
 				9A3677FF204B21BC0039F797 /* UserProfileHeader.swift in Sources */,
 				9A3677FD2048F17F0039F797 /* UserProfileController.swift in Sources */,

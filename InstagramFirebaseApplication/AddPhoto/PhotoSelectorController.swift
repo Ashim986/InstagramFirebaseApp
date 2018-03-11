@@ -17,6 +17,7 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     var images = [UIImage]()
     var selectedImage : UIImage?
     var asset = [PHAsset]()
+    var photoSelectorHeader : PhotoSelectorHeader?
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -72,11 +73,10 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     }
  
     fileprivate func setupNavitationButtons() {
-        navigationItem.rightBarButtonItem?.tintColor = .black
-        navigationItem.leftBarButtonItem?.tintColor = .black
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(handleNext))
+        UINavigationBar.appearance().tintColor = .black
     }
   
     @objc private func handleCancel() {
@@ -85,7 +85,9 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     }
     
     @objc private func handleNext() {
-        print("handle Next")
+        let sharePhotoController = SharePhotoController()
+        sharePhotoController.selectedImage = photoSelectorHeader?.photoHeaderImageView.image 
+       navigationController?.pushViewController(sharePhotoController, animated: true)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -94,6 +96,9 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedImage = images[indexPath.item]
         self.collectionView?.reloadData()
+        
+        let indexPath = IndexPath(item: 0, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
        
     }
     
@@ -127,6 +132,7 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerID, for: indexPath) as! PhotoSelectorHeader
+        self.photoSelectorHeader = header
         
         if let selectedImage = selectedImage{
             if let index =  self.images.index(of: selectedImage) {
