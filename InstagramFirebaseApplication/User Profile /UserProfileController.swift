@@ -25,42 +25,28 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         collectionView?.register(UserProfilePhotoCell.self , forCellWithReuseIdentifier: cellID)
         fetchUser()
         setupLogOutButton()
-        fetchPosts()
+        fetchOrderedPosts()
     }
     
-    fileprivate func fetchPosts() {
-        // fetching user from their login detail require observe the event at the perticular node, with snapshot
-        
+    fileprivate func fetchOrderedPosts(){
         guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
+        // we will implement some sort of pagination later on with ordered post
         
         let refrence = Database.database().reference().child("posts").child(uid)
-        
-        
-        refrence.observe(.value, with: { (snapshot) in
-            print(snapshot.value)
+        refrence.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
             
-            guard let dictionaries = snapshot.value as? [String : Any] else {return}
-            
-            dictionaries.forEach({ (key, value) in
-                print("Key : \(key) , Value : \(value)")
-                guard let dictionary = value as? [String : Any] else {return}
-                
-                let imageUrl = dictionary["imageUrl"] as? String
-                print("imageUrl : ",imageUrl as Any)
-                
-                let post = Post(dictionary: dictionary)
-               
-                self.posts.append(post)
-            })
+            guard let dictionary = snapshot.value as? [String : Any] else {return}
+            let post = Post(dictionary: dictionary)
+            self.posts.append(post)
             self.collectionView?.reloadData()
             
         }) { (err) in
-            print("failed to fetch posts : ", err)
+            print("failed to fetch posts:", err)
         }
-        
     }
+
     
     fileprivate func setupLogOutButton(){
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogout))

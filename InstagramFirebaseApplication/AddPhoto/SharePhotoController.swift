@@ -65,11 +65,9 @@ class SharePhotoController: UIViewController {
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
                 return
             }
-            
             guard let imageURL = metadata?.downloadURL()?.absoluteString else { return }
             self.saveToDatabaseWithImageUrl(imageURL: imageURL, caption: caption)
         }
-        
     }
     
     fileprivate func saveToDatabaseWithImageUrl(imageURL : String, caption : String) {
@@ -80,9 +78,7 @@ class SharePhotoController: UIViewController {
             return
         }
         let childPostRefrence =  Database.database().reference().child("posts").child(uid)
-        
         let reference =  childPostRefrence.childByAutoId()
-        
         let values : [String : Any] = ["imageUrl" : imageURL , "caption" : caption , "imageWidth" : postImage.size.width, "imageHeight" : postImage.size.height , "creationDate" : Date().timeIntervalSince1970]
         
         reference.updateChildValues(values) { (err, ref) in

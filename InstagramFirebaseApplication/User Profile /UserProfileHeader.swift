@@ -14,14 +14,14 @@ class UserProfileHeader: UICollectionViewCell {
     
     var user : UserModel? {
         didSet{
-//            print("did set \(user?.username)")
-            setupProfileImage()
+            guard let profileImage = user?.profileImageUrl else {return}
+            profileImageView.loadImage(urlString: profileImage)
             userNameLabel.text = user?.username
         }
     }
     
-    let profileImageView : UIImageView = {
-       let imageView = UIImageView()
+    let profileImageView : CustomImageView = {
+       let imageView = CustomImageView()
         imageView.backgroundColor = .clear
         imageView.layer.cornerRadius = 40
         imageView.layer.masksToBounds = true
@@ -146,27 +146,6 @@ class UserProfileHeader: UICollectionViewCell {
         editProfileButton.anchor(top: postLabel.bottomAnchor, left: profileImageView.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 2, paddingLeft: 20, paddingBottom: 0, paddingRight: -10, width: 0, height: 34)
     }
     
-    fileprivate func setupProfileImage() {
-
-        guard let profileImage = user?.profileImageUrl else {return}
-        guard let url = URL(string: profileImage) else {return}
-//         Using SDWeb Image Pod
-         self.profileImageView.sd_setImage(with: url, completed: nil)
-        
-//        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-//            if let err = error {
-//                print("Failed to fetch profile image : ", err)
-//            }
-//            // check for http response status of 200 (HTTP ok)
-//            guard let data = data else{return}
-//
-//            // need to load image in view main thread
-//            DispatchQueue.main.async {
-//                self.profileImageView.image = UIImage(data: data)
-//            }
-//        }).resume()
-
-    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
