@@ -11,13 +11,12 @@ import Firebase
 
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var user : UserModel?
+    var user : User?
     
     let headerID = "headerID"
     let cellID = "cellID"
     var posts = [Post]()
-    
-    
+  
     override func viewDidLoad() {
         super .viewDidLoad()
         collectionView?.backgroundColor = .white
@@ -38,16 +37,17 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         refrence.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
             
             guard let dictionary = snapshot.value as? [String : Any] else {return}
-            let post = Post(dictionary: dictionary)
-            self.posts.append(post)
+            
+            guard let user = self.user else {return}
+            let post = Post(user: user, dictionary: dictionary)
+            self.posts.insert(post, at: 0)
             self.collectionView?.reloadData()
             
         }) { (err) in
             print("failed to fetch posts:", err)
         }
     }
-
-    
+ 
     fileprivate func setupLogOutButton(){
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogout))
     }
@@ -98,16 +98,11 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     fileprivate func fetchUser() {
         guard let uid = Auth.auth().currentUser?.uid else {return}
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let dictionary = snapshot.value as? [String : Any] else {return }
-            
-            self.user = UserModel(dictionary: dictionary)
-            self.navigationItem.title = self.user?.username
-            self.collectionView?.reloadData()
-            
-        }) { (err) in
-            print("failed to fetch user ", err)
+        Database.fetchUserWithUID(uid: uid) { (user) in
+            self.user = user
+            self.navigationItem.title = user.username
         }
+         self.collectionView?.reloadData()
     }
     
     // MARK: Header section
@@ -121,16 +116,6 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
 }
 
-
-struct UserModel {
-    let username : String
-    let profileImageUrl : String
-    
-    init(dictionary : [String : Any]) {
-        self.username = dictionary["username"] as? String ?? ""
-        self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
-    }
-}
 
 
 

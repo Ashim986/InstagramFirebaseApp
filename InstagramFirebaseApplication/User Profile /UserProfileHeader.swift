@@ -12,7 +12,7 @@ import SDWebImage
 
 class UserProfileHeader: UICollectionViewCell {
     
-    var user : UserModel? {
+    var user : User? {
         didSet{
             guard let profileImage = user?.profileImageUrl else {return}
             profileImageView.loadImage(urlString: profileImage)

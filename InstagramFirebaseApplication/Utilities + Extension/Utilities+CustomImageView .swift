@@ -8,14 +8,19 @@
 
 import UIKit
 
+var imageCashe = [String : UIImage]()
+
 class CustomImageView : UIImageView {
     
     var lastUrlUsedToLoadImage : String?
     
     func loadImage (urlString : String)  {
-        
         lastUrlUsedToLoadImage = urlString
         guard let url = URL(string: urlString) else {return}
+        if let cashedImage = imageCashe[urlString] {
+            self.image = cashedImage
+            return
+        }
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             if let err = err {
                 print("failed to fetch image : ", err)
@@ -27,6 +32,7 @@ class CustomImageView : UIImageView {
             }
             guard let imageData = data else {return}
             let photoImage = UIImage(data: imageData)
+            imageCashe[url.absoluteString] = photoImage
             DispatchQueue.main.async {
                 self.image = photoImage
             }
